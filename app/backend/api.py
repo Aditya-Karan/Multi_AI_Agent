@@ -17,6 +17,10 @@ class RequestState(BaseModel):
     messages:List[str]
     allow_search: bool
 
+@app.get("/")
+def root():
+    return {"message": "Backend is running"}
+
 @app.post("/chat")
 def chat_endpoint(request:RequestState):
     logger.info(f"Received request for model : {request.model_name}")
