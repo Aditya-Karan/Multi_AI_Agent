@@ -15,5 +15,4 @@ COPY . .
 
 EXPOSE 8501
 
-# ✅ Launch Streamlit from ui.py
 CMD ["streamlit", "run", "app/frontend/ui.py", "--server.port=8501", "--server.enableCORS=false"]

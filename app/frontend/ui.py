@@ -80,7 +80,7 @@ with st.form("chat_form"):
     user_query = st.text_area("Enter your query:", height=150)
     submit_button = st.form_submit_button("Ask Agent")
 
-API_URL = "http://127.0.0.1:7000/chat"
+API_URL = "https://multi-ai-agent-q9gd.onrender.com/chat"  # ✅ Deployed backend
 
 # --- Handle Submission ---
 if submit_button and user_query.strip():
