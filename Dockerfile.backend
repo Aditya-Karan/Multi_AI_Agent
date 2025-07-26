@@ -1,0 +1,22 @@
+# Use slim Python image
+FROM python:3.10-slim
+
+# Env config
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy code
+COPY . .
+
+# Expose backend port
+EXPOSE 7000
+
+# Start backend server (modify if you use FastAPI or Flask)
+CMD ["python", "app/backend/main.py"]
