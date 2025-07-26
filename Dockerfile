@@ -1,10 +1,12 @@
-# Use slim Python image
 FROM python:3.10-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
 WORKDIR /app
+
+# ✅ Install git before pip install
+RUN apt-get update && apt-get install -y git && apt-get clean
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
