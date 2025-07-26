@@ -1,22 +1,24 @@
-# Use slim Python image
 FROM python:3.10-slim
 
-# Env config
+# Env setup
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
-# Set working directory
+# Set workdir
 WORKDIR /app
+
+# Install git (optional but useful for editable installs)
+RUN apt-get update && apt-get install -y git && apt-get clean
 
 # Install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy code
+# Copy codebase
 COPY . .
 
-# Expose backend port
+# Expose FastAPI backend port
 EXPOSE 7000
 
-# Start backend server (modify if you use FastAPI or Flask)
-CMD ["python", "app/backend/main.py"]
+# ✅ Start FastAPI backend using uvicorn (correct entry point)
+CMD ["uvicorn", "app.backend.api:app", "--host", "0.0.0.0", "--port", "7000"]

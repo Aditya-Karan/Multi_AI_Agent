@@ -1,11 +1,11 @@
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# ✅ Install git before pip install
+# Install git to support some pip installs (e.g. editable installs)
 RUN apt-get update && apt-get install -y git && apt-get clean
 
 COPY requirements.txt .
@@ -15,4 +15,5 @@ COPY . .
 
 EXPOSE 8501
 
-CMD ["streamlit", "run", "app/frontend/main.py", "--server.port=8501", "--server.enableCORS=false"]
+# ✅ Launch Streamlit from ui.py
+CMD ["streamlit", "run", "app/frontend/ui.py", "--server.port=8501", "--server.enableCORS=false"]
