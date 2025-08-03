@@ -32,7 +32,7 @@ with st.form("chat_form"):
     user_query = st.text_area("Enter your query:", height=150)
     submit_button = st.form_submit_button("Ask Agent")
 
-API_URL = "https://backend-ku8f.onrender.com"  # ✅ Deployed backend
+API_URL = "https://backend-ku8f.onrender.com/chat"  # ✅ Deployed backend
 
 # --- Handle Submission ---
 if submit_button and user_query.strip():
