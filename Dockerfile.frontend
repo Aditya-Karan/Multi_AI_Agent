@@ -1,11 +1,11 @@
 FROM python:3.11-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app  # <-- Add this line
 
 WORKDIR /app
 
-# Install git to support some pip installs (e.g. editable installs)
 RUN apt-get update && apt-get install -y git && apt-get clean
 
 COPY requirements.txt .
