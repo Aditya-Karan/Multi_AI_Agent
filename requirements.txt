@@ -42,7 +42,6 @@ langgraph-sdk==0.1.73
 langsmith==0.4.5
 MarkupSafe==3.0.2
 marshmallow==3.26.1
--e git+https://github.com/Aditya-Karan/Multi-AI-Agent.git@11ba44c054ea0902e7848693e19e0de9b583f392#egg=MULTI_AI_AGENT
 multidict==6.6.3
 mypy_extensions==1.1.0
 narwhals==1.47.0
