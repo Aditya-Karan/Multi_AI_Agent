@@ -1,3 +1,7 @@
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))  # ✅ Add /app to sys.path
+
 import streamlit as st
 import requests
 
@@ -66,11 +70,10 @@ if st.session_state.messages:
         st.markdown(f"{st.session_state.messages[-1]['content'].replace(chr(10), '<br>')}", unsafe_allow_html=True)
 
 # --- Display Full Conversation History Below ---
-# --- Display Full Conversation History With "Show More" ---
 if st.session_state.messages:
     st.markdown("---")
     st.subheader("Conversation History")
-    
+
     for i in range(0, len(st.session_state.messages) - 1, 2):
         user_msg = st.session_state.messages[i]["content"]
         agent_msg = st.session_state.messages[i + 1]["content"]
@@ -80,9 +83,6 @@ if st.session_state.messages:
         # Split assistant message into preview and full
         words = agent_msg.split()
         preview = " ".join(words[:10]) + ("..." if len(words) > 10 else "")
-        
+
         with st.expander(f"**Agent:** {preview}"):
             st.markdown(agent_msg.replace("\n", "<br>"), unsafe_allow_html=True)
-
-
-
